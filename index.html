@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a237e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>Motonauta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- HOME SCREEN -->
+    <div id="screen-home" class="screen active">
+      <header class="app-header">
+        <div class="logo">⚓</div>
+        <h1>Motonauta</h1>
+        <p class="subtitle">Estudo para habilitação de jet ski</p>
+      </header>
+
+      <div class="topic-chips" id="topic-chips">
+        <button class="chip active" data-topic="all">Todos</button>
+        <button class="chip" data-topic="ripeam">RIPEAM</button>
+        <button class="chip" data-topic="balizamento">Balizamento</button>
+        <button class="chip" data-topic="primeiros_socorros">Primeiros Socorros</button>
+        <button class="chip" data-topic="regulamentos">Regulamentos</button>
+        <button class="chip" data-topic="sobrevivencia">Sobrevivência</button>
+      </div>
+
+      <div class="mode-cards">
+        <button class="mode-card" data-mode="flashcards">
+          <span class="mode-icon">🃏</span>
+          <span class="mode-title">Flash Cards</span>
+          <span class="mode-desc">Estude no seu ritmo</span>
+        </button>
+        <button class="mode-card" data-mode="quiz">
+          <span class="mode-icon">✏️</span>
+          <span class="mode-title">Quiz</span>
+          <span class="mode-desc">10 questões com feedback</span>
+        </button>
+        <button class="mode-card" data-mode="exam">
+          <span class="mode-icon">📋</span>
+          <span class="mode-title">Simulado</span>
+          <span class="mode-desc">20 questões, 1h30, como na prova</span>
+        </button>
+      </div>
+
+      <div class="progress-summary" id="progress-summary">
+        <h2>Seu Progresso</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-value" id="stat-cards">0</span>
+            <span class="stat-label">Cards estudados</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-quiz">-</span>
+            <span class="stat-label">Média quiz</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-exams">0</span>
+            <span class="stat-label">Simulados feitos</span>
+          </div>
+        </div>
+        <button class="btn-text" id="btn-reset">Resetar Progresso</button>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS SCREEN -->
+    <div id="screen-flashcards" class="screen">
+      <header class="screen-header">
+        <button class="btn-back" id="fc-back">← Voltar</button>
+        <h2>Flash Cards</h2>
+        <span class="fc-counter" id="fc-counter">0/0</span>
+      </header>
+      <div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-progress-fill"></div></div>
+      <div class="fc-container" id="fc-container">
+        <div class="flashcard" id="flashcard">
+          <div class="fc-inner">
+            <div class="fc-front">
+              <p class="fc-topic" id="fc-topic"></p>
+              <p class="fc-question" id="fc-question"></p>
+              <p class="fc-hint">Toque para virar</p>
+            </div>
+            <div class="fc-back">
+              <p class="fc-answer-label">Resposta:</p>
+              <p class="fc-answer" id="fc-answer"></p>
+              <p class="fc-explanation" id="fc-explanation"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-actions">
+        <button class="btn fc-btn-review" id="fc-revisar">Revisar</button>
+        <button class="btn fc-btn-know" id="fc-sei">Sei</button>
+      </div>
+      <div class="fc-empty hidden" id="fc-empty">
+        <p>Nenhum card para este tema.</p>
+        <button class="btn" id="fc-empty-back">Voltar</button>
+      </div>
+      <div class="fc-done hidden" id="fc-done">
+        <p>Você revisou todos os cards!</p>
+        <button class="btn" id="fc-done-restart">Recomeçar</button>
+        <button class="btn btn-outline" id="fc-done-back">Voltar</button>
+      </div>
+    </div>
+
+    <!-- QUIZ SCREEN -->
+    <div id="screen-quiz" class="screen">
+      <!-- Quiz Setup -->
+      <div id="quiz-setup">
+        <header class="screen-header">
+          <button class="btn-back" id="quiz-back">← Voltar</button>
+          <h2>Quiz</h2>
+        </header>
+        <div class="quiz-setup-body">
+          <p>Selecione o tema e responda 10 questões com feedback imediato.</p>
+          <div class="topic-select" id="quiz-topic-select">
+            <button class="chip active" data-topic="all">Todos</button>
+            <button class="chip" data-topic="ripeam">RIPEAM</button>
+            <button class="chip" data-topic="balizamento">Balizamento</button>
+            <button class="chip" data-topic="primeiros_socorros">Primeiros Socorros</button>
+            <button class="chip" data-topic="regulamentos">Regulamentos</button>
+            <button class="chip" data-topic="sobrevivencia">Sobrevivência</button>
+          </div>
+          <button class="btn btn-primary btn-large" id="quiz-start">Iniciar Quiz</button>
+        </div>
+      </div>
+      <!-- Quiz In Progress -->
+      <div id="quiz-active" class="hidden">
+        <header class="screen-header">
+          <button class="btn-back" id="quiz-quit">← Sair</button>
+          <h2>Quiz</h2>
+          <span class="quiz-counter" id="quiz-counter">1/10</span>
+        </header>
+        <div class="quiz-body">
+          <p class="quiz-topic-tag" id="quiz-topic-tag"></p>
+          <p class="quiz-question" id="quiz-question"></p>
+          <div class="quiz-options" id="quiz-options"></div>
+          <p class="quiz-explanation hidden" id="quiz-explanation"></p>
+          <button class="btn btn-primary hidden" id="quiz-next">Próxima</button>
+        </div>
+      </div>
+      <!-- Quiz Results -->
+      <div id="quiz-results" class="hidden">
+        <header class="screen-header">
+          <h2>Resultado do Quiz</h2>
+        </header>
+        <div class="results-body">
+          <div class="results-score" id="quiz-results-score"></div>
+          <div class="results-actions">
+            <button class="btn btn-primary" id="quiz-new">Novo Quiz</button>
+            <button class="btn btn-outline" id="quiz-review-errors">Revisar Erros</button>
+            <button class="btn btn-outline" id="quiz-results-home">Voltar ao Início</button>
+          </div>
+          <div class="errors-review hidden" id="quiz-errors-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM SCREEN -->
+    <div id="screen-exam" class="screen">
+      <!-- Exam Intro -->
+      <div id="exam-intro">
+        <header class="screen-header">
+          <button class="btn-back" id="exam-back">← Voltar</button>
+          <h2>Simulado</h2>
+        </header>
+        <div class="exam-intro-body">
+          <h3>Regras do Simulado</h3>
+          <ul>
+            <li>20 questões de múltipla escolha</li>
+            <li>5 alternativas por questão</li>
+            <li>Tempo limite: 1 hora e 30 minutos</li>
+            <li>Aprovação: mínimo 50% (10 acertos)</li>
+            <li>Sem feedback durante a prova</li>
+          </ul>
+          <button class="btn btn-primary btn-large" id="exam-start">Iniciar Simulado</button>
+        </div>
+      </div>
+      <!-- Exam In Progress -->
+      <div id="exam-active" class="hidden">
+        <header class="screen-header exam-header">
+          <button class="btn-back" id="exam-quit">← Sair</button>
+          <span class="exam-timer" id="exam-timer">1:30:00</span>
+          <button class="btn btn-small btn-danger" id="exam-finish">Finalizar</button>
+        </header>
+        <div class="exam-body">
+          <p class="exam-question-label" id="exam-question-label">Questão 1 de 20</p>
+          <p class="exam-question" id="exam-question"></p>
+          <div class="exam-options" id="exam-options"></div>
+          <div class="exam-nav">
+            <button class="btn btn-outline btn-small" id="exam-prev">← Anterior</button>
+            <button class="btn btn-outline btn-small" id="exam-next-q">Próxima →</button>
+          </div>
+          <div class="exam-grid" id="exam-grid"></div>
+        </div>
+      </div>
+      <!-- Exam Results -->
+      <div id="exam-results" class="hidden">
+        <header class="screen-header">
+          <h2>Resultado do Simulado</h2>
+        </header>
+        <div class="results-body">
+          <div class="results-banner" id="exam-banner"></div>
+          <div class="results-score" id="exam-results-score"></div>
+          <div class="exam-topic-breakdown" id="exam-breakdown"></div>
+          <div class="results-actions">
+            <button class="btn btn-primary" id="exam-new">Novo Simulado</button>
+            <button class="btn btn-outline" id="exam-review">Revisar Respostas</button>
+            <button class="btn btn-outline" id="exam-results-home">Voltar ao Início</button>
+          </div>
+          <div class="errors-review hidden" id="exam-review-list"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>
