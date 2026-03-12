@@ -187,6 +187,7 @@ function renderFlashCard() {
 
   const card = document.getElementById('flashcard');
   card.classList.remove('flipped');
+  document.querySelector('.fc-actions').classList.add('fc-hidden');
   fcFlipped = false;
 
   const inner = card.querySelector('.fc-inner');
@@ -195,19 +196,68 @@ function renderFlashCard() {
   inner.classList.add('arriving');
 }
 
+// Swipe gestures for flashcards
+let fcTouchStartX = 0;
+let fcTouchStartY = 0;
+const fcEl = document.getElementById('flashcard');
+fcEl.addEventListener('touchstart', e => {
+  fcTouchStartX = e.changedTouches[0].screenX;
+  fcTouchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+fcEl.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].screenX - fcTouchStartX;
+  const dy = e.changedTouches[0].screenY - fcTouchStartY;
+  if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return; // too short or vertical
+  if (!fcFlipped) return; // only swipe after seeing answer
+  if (dx > 0) {
+    document.getElementById('fc-sei').click(); // swipe right = know
+  } else {
+    document.getElementById('fc-revisar').click(); // swipe left = review
+  }
+}, { passive: true });
+
 document.getElementById('flashcard').addEventListener('click', () => {
   const card = document.getElementById('flashcard');
   fcFlipped = !fcFlipped;
   card.classList.toggle('flipped', fcFlipped);
+  if (fcFlipped) document.querySelector('.fc-actions').classList.remove('fc-hidden');
 });
 
+let fcToastTimer = null;
 document.getElementById('fc-sei').addEventListener('click', () => {
   if (fcIndex >= fcDeck.length) return;
+  const cardId = fcDeck[fcIndex].id;
+  const prevIndex = fcIndex;
   const fc = Storage.get('flashcards', {});
-  fc[fcDeck[fcIndex].id] = 'know';
+  const prevStatus = fc[cardId];
+  fc[cardId] = 'know';
   Storage.set('flashcards', fc);
   fcIndex++;
   renderFlashCard();
+
+  // Show undo toast
+  clearTimeout(fcToastTimer);
+  const toast = document.getElementById('fc-toast');
+  toast.classList.remove('hidden');
+  fcToastTimer = setTimeout(() => toast.classList.add('hidden'), 3000);
+
+  // Set up one-time undo handler
+  const undoBtn = document.getElementById('fc-undo');
+  const handler = () => {
+    const fc2 = Storage.get('flashcards', {});
+    if (prevStatus) fc2[cardId] = prevStatus;
+    else delete fc2[cardId];
+    Storage.set('flashcards', fc2);
+    toast.classList.add('hidden');
+    clearTimeout(fcToastTimer);
+    // Re-insert card at current position
+    fcDeck.splice(fcIndex, 0, fcDeck.splice(prevIndex, 0)[0] || fcDeck[fcIndex - 1]);
+    fcIndex = prevIndex;
+    renderFlashCard();
+    undoBtn.removeEventListener('click', handler);
+  };
+  undoBtn.replaceWith(undoBtn.cloneNode(true)); // remove old listeners
+  document.getElementById('fc-undo').addEventListener('click', handler);
 });
 
 document.getElementById('fc-revisar').addEventListener('click', () => {
@@ -270,6 +320,7 @@ document.getElementById('quiz-start').addEventListener('click', () => {
 });
 
 function renderQuizQuestion() {
+  window.scrollTo(0, 0);
   quizAnswered = false;
   const q = quizQuestions[quizIndex];
   document.getElementById('quiz-counter').textContent = `${quizIndex + 1}/${quizQuestions.length}`;
@@ -427,6 +478,7 @@ function updateTimerDisplay() {
 }
 
 function renderExamQuestion() {
+  window.scrollTo(0, 0);
   const q = examQuestions[examIndex];
   document.getElementById('exam-question-label').textContent = `Questão ${examIndex + 1} de 20`;
   document.getElementById('exam-question').textContent = q.question;
