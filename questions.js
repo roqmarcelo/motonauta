@@ -1271,5 +1271,388 @@ const questions = [
     ],
     correctIndex: 2,
     explanation: "O Canal 16 (frequência 156,8 MHz) é o canal internacional de chamada e socorro no VHF marítimo."
+  },
+  // ===== RIPEAM (7 new questions, rip21–rip27) =====
+  {
+    id: "rip21",
+    topic: "ripeam",
+    question: "Ao cruzar uma via de tráfego separado, a embarcação deve fazê-lo:",
+    options: [
+      "Paralelamente ao fluxo de tráfego",
+      "Em ângulo agudo, seguindo o fluxo",
+      "Perpendicularmente ou o mais próximo possível do ângulo reto em relação ao fluxo",
+      "Em qualquer ângulo, desde que com velocidade reduzida",
+      "Apenas pelo lado de boreste"
+    ],
+    correctIndex: 2,
+    explanation: "O RIPEAM determina que ao cruzar uma via de tráfego separado, a embarcação deve fazê-lo perpendicularmente (ou o mais próximo de 90°) à direção geral do tráfego."
+  },
+  {
+    id: "rip22",
+    topic: "ripeam",
+    question: "Qual o principal efeito das águas rasas sobre uma embarcação em movimento?",
+    options: [
+      "Redução da resistência à propulsão",
+      "Aumento da velocidade máxima",
+      "Melhora na manobrabilidade",
+      "Aumento da resistência à propulsão e redução da velocidade",
+      "Nenhum efeito significativo"
+    ],
+    correctIndex: 3,
+    explanation: "Em águas rasas, a embarcação sofre maior resistência à propulsão (efeito de águas rasas), reduzindo a velocidade e dificultando as manobras."
+  },
+  {
+    id: "rip23",
+    topic: "ripeam",
+    question: "Uma embarcação que realiza reboque com comprimento total superior a 200 metros deve exibir, no mastro:",
+    options: [
+      "Uma luz branca contínua",
+      "Duas luzes brancas verticais",
+      "Uma luz amarela piscante",
+      "Três luzes brancas em linha vertical",
+      "Nenhuma sinalização adicional é necessária"
+    ],
+    correctIndex: 3,
+    explanation: "Quando o comprimento total do reboque (embarcação + cabo + rebocado) excede 200 metros, devem ser exibidas três luzes brancas verticais no mastro da embarcação rebocadora."
+  },
+  {
+    id: "rip24",
+    topic: "ripeam",
+    question: "Duas embarcações a motor navegando em sentidos contrários devem passar uma pela outra:",
+    options: [
+      "Boreste com boreste",
+      "Bombordo com bombordo",
+      "A embarcação maior sempre pela bombordo",
+      "Sem regra definida, a critério do comandante",
+      "A embarcação menor cede passagem pela boreste"
+    ],
+    correctIndex: 1,
+    explanation: "No cruzamento em sentidos opostos (proa a proa), cada embarcação guina para boreste para passar bombordo com bombordo da outra."
+  },
+  {
+    id: "rip25",
+    topic: "ripeam",
+    question: "Uma embarcação a motor com comprimento entre 7 e 12 metros deve exibir, à noite, quais luzes?",
+    options: [
+      "Apenas uma luz branca de mastro",
+      "Luz de boreste (verde), luz de bombordo (vermelha) e luz de alcançado (branca na popa)",
+      "Apenas luzes de bordo (verde e vermelha)",
+      "Uma luz branca de alcançado e uma luz de mastro amarela",
+      "Luz tricolor no topo do mastro apenas"
+    ],
+    correctIndex: 1,
+    explanation: "Embarcações a motor de 7 a 12 m devem exibir luzes de bordo (verde a boreste e vermelha a bombordo) e luz branca de alcançado (popa), podendo combinar as de bordo em uma lanterna tricolor."
+  },
+  {
+    id: "rip26",
+    topic: "ripeam",
+    question: "Qual é o ângulo de visibilidade (arco de iluminação) de cada luz de bordo (boreste e bombordo)?",
+    options: [
+      "180°",
+      "360°",
+      "90°",
+      "225°",
+      "112,5°"
+    ],
+    correctIndex: 4,
+    explanation: "Cada luz de bordo (verde a boreste, vermelha a bombordo) possui ângulo de visibilidade de 112,5°, cobrindo da proa até a popa pelo respectivo lado."
+  },
+  {
+    id: "rip27",
+    topic: "ripeam",
+    question: "Uma embarcação a motor parada (sem avaria) em visibilidade reduzida deve emitir sinais sonoros de:",
+    options: [
+      "Um som longo a cada 2 minutos",
+      "Dois sons longos a cada 2 minutos",
+      "Três sons curtos a cada minuto",
+      "Sons contínuos enquanto houver perigo",
+      "Nenhum sinal é exigido para embarcação parada"
+    ],
+    correctIndex: 1,
+    explanation: "Embarcação a motor com máquinas paradas (sem seguir rumo) em visibilidade reduzida emite dois sons longos a cada 2 minutos."
+  },
+  // ===== BALIZAMENTO (5 new questions, bal16–bal20) =====
+  {
+    id: "bal16",
+    topic: "balizamento",
+    question: "Qual a combinação de cores de uma boia que indica canal preferencial?",
+    options: [
+      "Amarela com faixas pretas",
+      "Toda branca",
+      "Verde e vermelha em faixas horizontais",
+      "Azul e branca",
+      "Preta com faixas amarelas"
+    ],
+    correctIndex: 2,
+    explanation: "A boia de canal preferencial combina faixas horizontais verde e vermelha; a cor predominante no topo indica o lado do canal preferido."
+  },
+  {
+    id: "bal17",
+    topic: "balizamento",
+    question: "O que indicam as marcas de áreas de segurança no balizamento?",
+    options: [
+      "Passagem recomendada para pequenas embarcações",
+      "Áreas onde o tráfego ou fundeio é proibido",
+      "Pontos de abastecimento de combustível",
+      "Limites de velocidade máxima",
+      "Zonas de pesca permitida"
+    ],
+    correctIndex: 1,
+    explanation: "As marcas de áreas de segurança delimitam zonas onde o tráfego ou o fundeio são proibidos, como áreas de banhistas, cabos submarinos e instalações."
+  },
+  {
+    id: "bal18",
+    topic: "balizamento",
+    question: "Uma marca de tope com dois cones pretos sobrepostos (vértices opostos) indica:",
+    options: [
+      "Perigo isolado",
+      "Boia cardinal norte",
+      "Águas seguras em todos os lados (mark of safe water)",
+      "Canal preferido a boreste",
+      "Área de fundeio proibido"
+    ],
+    correctIndex: 2,
+    explanation: "Dois cones com vértices opostos (um para cima e um para baixo) são a marca de tope da boia de águas seguras, indicando que a água é navegável em todos os quadrantes."
+  },
+  {
+    id: "bal19",
+    topic: "balizamento",
+    question: "Uma boia com um \"X\" amarelo no tope é classificada como:",
+    options: [
+      "Boia cardinal leste",
+      "Boia de perigo isolado",
+      "Boia de águas seguras",
+      "Boia especial (sinal especial)",
+      "Boia lateral de bombordo"
+    ],
+    correctIndex: 3,
+    explanation: "O \"X\" amarelo no tope é a marca característica das boias especiais (sinais especiais), usadas para indicar áreas específicas como zones de exercício, cabos e dutos."
+  },
+  {
+    id: "bal20",
+    topic: "balizamento",
+    question: "As boias do sistema de balizamento podem ser:",
+    options: [
+      "Apenas luminosas (com luz noturna)",
+      "Apenas cegas (sem luz)",
+      "Cegas ou luminosas, conforme a localização e necessidade",
+      "Sempre sonoras com apito",
+      "Apenas flutuantes sem qualquer sinalização visual"
+    ],
+    correctIndex: 2,
+    explanation: "As boias de balizamento podem ser cegas (apenas visuais pelo dia) ou luminosas (com luz para visibilidade noturna), conforme a importância e localização do ponto balizado."
+  },
+  // ===== PRIMEIROS SOCORROS (8 new questions, ps21–ps28) =====
+  {
+    id: "ps21",
+    topic: "primeiros_socorros",
+    question: "Quais são os sinais característicos de uma parada cardíaca?",
+    options: [
+      "Febre alta, sudorese e agitação",
+      "Palidez acentuada, queda da temperatura corporal e pupilas dilatadas",
+      "Pele avermelhada, pulso acelerado e respiração rápida",
+      "Dor de cabeça intensa e vômito",
+      "Apenas inconsciência, sem alterações físicas visíveis"
+    ],
+    correctIndex: 1,
+    explanation: "A parada cardíaca provoca palidez acentuada (ausência de circulação), queda da temperatura corporal e dilatação das pupilas (midríase), além de ausência de pulso e respiração."
+  },
+  {
+    id: "ps22",
+    topic: "primeiros_socorros",
+    question: "Para realizar a respiração boca a boca corretamente, a cabeça da vítima deve estar:",
+    options: [
+      "Inclinada para a frente, com o queixo flexionado",
+      "Em posição neutra, sem inclinação",
+      "Inclinada para trás (extensão da cabeça), para abrir as vias aéreas",
+      "Virada para o lado esquerdo",
+      "Elevada em 45 graus sobre um apoio"
+    ],
+    correctIndex: 2,
+    explanation: "A hiperextensão da cabeça (inclinar para trás) e elevação do mento abrem as vias aéreas, permitindo que o ar entre nos pulmões durante a ventilação boca a boca."
+  },
+  {
+    id: "ps23",
+    topic: "primeiros_socorros",
+    question: "Para imobilizar uma fratura de antebraço na ausência de material médico, pode-se usar:",
+    options: [
+      "Apenas bandagem elástica, sem tala rígida",
+      "Compressa de gelo diretamente no local",
+      "Tala de tábua, jornal dobrado ou pano enrolado, fixados com ataduras",
+      "Gesso improvisado com areia úmida",
+      "Enfaixar firmemente sem qualquer suporte rígido"
+    ],
+    correctIndex: 2,
+    explanation: "Materiais rígidos como tábua, jornal dobrado ou pano enrolado servem como tala improvisada para imobilizar fraturas de antebraço, fixados com ataduras ou tiras de tecido."
+  },
+  {
+    id: "ps24",
+    topic: "primeiros_socorros",
+    question: "Em primeiros socorros, define-se hemorragia como:",
+    options: [
+      "Qualquer ferimento na pele, com ou sem sangramento",
+      "Perda de plasma sem sangramento visível",
+      "Grande perda de sangue do organismo, podendo ser interna ou externa",
+      "Acúmulo de sangue em uma cavidade do corpo",
+      "Sangramento restrito a vasos capilares superficiais"
+    ],
+    correctIndex: 2,
+    explanation: "Hemorragia é definida como grande perda de sangue do organismo, podendo ser externa (visível) ou interna (para cavidades corporais), colocando a vida em risco."
+  },
+  {
+    id: "ps25",
+    topic: "primeiros_socorros",
+    question: "O tratamento inicial correto para pequenas queimaduras é:",
+    options: [
+      "Aplicar manteiga ou creme para aliviar a dor",
+      "Estourar as bolhas para liberar o líquido acumulado",
+      "Cobrir com algodão seco imediatamente",
+      "Lavar com água corrente e não romper as bolhas",
+      "Aplicar gelo diretamente sobre a queimadura"
+    ],
+    correctIndex: 3,
+    explanation: "Pequenas queimaduras devem ser lavadas com água corrente em temperatura ambiente e as bolhas não devem ser rompidas, pois a pele íntegra protege contra infecção."
+  },
+  {
+    id: "ps26",
+    topic: "primeiros_socorros",
+    question: "A exposição prolongada em ambiente fechado e muito quente, com falta de ar, pode causar:",
+    options: [
+      "Hipotermia",
+      "Congelamento",
+      "Síncope por calor (desmaio) e sinais de hipertermia",
+      "Embolia pulmonar",
+      "Apenas tontura passageira sem risco real"
+    ],
+    correctIndex: 2,
+    explanation: "Ambientes fechados e quentes com má ventilação podem causar hipertermia e síncope (desmaio por calor), exigindo remoção imediata para local arejado."
+  },
+  {
+    id: "ps27",
+    topic: "primeiros_socorros",
+    question: "Uma vítima que vomita repetidamente corre o principal risco de:",
+    options: [
+      "Fratura de costelas pelo esforço",
+      "Parada cardíaca imediata",
+      "Desidratação pela perda de líquidos e eletrólitos",
+      "Hipertermia grave",
+      "Nenhum risco significativo se continuar consciente"
+    ],
+    correctIndex: 2,
+    explanation: "Vômitos repetidos levam à perda de líquidos e eletrólitos, causando desidratação que pode se agravar rapidamente, especialmente em ambiente aquático e de calor."
+  },
+  {
+    id: "ps28",
+    topic: "primeiros_socorros",
+    question: "A frequência recomendada de ventilações na respiração boca a boca (sem compressões) para adultos é:",
+    options: [
+      "5 a 8 por minuto",
+      "25 a 30 por minuto",
+      "10 a 12 por minuto",
+      "20 a 25 por minuto",
+      "2 a 4 por minuto"
+    ],
+    correctIndex: 2,
+    explanation: "Quando a vítima tem pulso mas não respira, realizam-se ventilações de resgate na frequência de 10 a 12 por minuto (uma ventilação a cada 5–6 segundos)."
+  },
+  // ===== REGULAMENTOS (4 new questions, reg21–reg24) =====
+  {
+    id: "reg21",
+    topic: "regulamentos",
+    question: "O tipo e a quantidade de extintor de incêndio portátil obrigatório a bordo são definidos por:",
+    options: [
+      "O próprio armador, conforme o tamanho da embarcação",
+      "A fabricante da embarcação na plaqueta de identificação",
+      "Documento normativo da Diretoria de Portos e Costas (DPC)",
+      "Legislação municipal de cada porto",
+      "O seguro náutico contratado"
+    ],
+    correctIndex: 2,
+    explanation: "O tipo e a quantidade de extintores de incêndio exigidos a bordo são determinados por norma da DPC (Diretoria de Portos e Costas da Marinha do Brasil)."
+  },
+  {
+    id: "reg22",
+    topic: "regulamentos",
+    question: "Existe comprimento mínimo definido para embarcações de esporte e recreio no Brasil?",
+    options: [
+      "Sim, mínimo de 2,5 metros",
+      "Sim, mínimo de 1,8 metros",
+      "Sim, mínimo de 5 metros para embarcações motorizadas",
+      "Não, não há comprimento mínimo definido pela regulamentação",
+      "Sim, mínimo de 3 metros para navegação marítima"
+    ],
+    correctIndex: 3,
+    explanation: "A regulamentação brasileira não define comprimento mínimo para embarcações de esporte e recreio; apenas impõe requisitos de segurança e equipamentos conforme as características da embarcação."
+  },
+  {
+    id: "reg23",
+    topic: "regulamentos",
+    question: "Uma moto aquática pode rebocar outra embarcação quando:",
+    options: [
+      "Nunca, é sempre proibido",
+      "Apenas em caso de emergência, independentemente da capacidade",
+      "Quando possui capacidade para 3 ou mais lugares, conforme autorização normativa",
+      "Somente se o condutor tiver habilitação de Arrais-Amador",
+      "Apenas em águas abrigadas e com velocidade máxima de 5 nós"
+    ],
+    correctIndex: 2,
+    explanation: "Motos aquáticas com capacidade para 3 ou mais lugares podem rebocar outras embarcações, conforme norma da Autoridade Marítima. Motos de 1 ou 2 lugares não podem rebocar."
+  },
+  {
+    id: "reg24",
+    topic: "regulamentos",
+    question: "Ao se aproximar de uma praia para atracar, o condutor de moto aquática deve:",
+    options: [
+      "Manter velocidade alta para facilitar o deslizamento na areia",
+      "Aproximar-se pela lateral em ângulo de 45°",
+      "Aproximar-se perpendicularmente à praia e reduzir a velocidade abaixo de 3 nós",
+      "Desligar o motor a 500 metros e deslizar até a praia",
+      "Fazer sinal sonoro contínuo para alertar os banhistas"
+    ],
+    correctIndex: 2,
+    explanation: "Ao entrar numa praia, a moto aquática deve aproximar-se perpendicularmente (em ângulo reto) e com velocidade inferior a 3 nós, garantindo a segurança dos banhistas."
+  },
+  // ===== SOBREVIVÊNCIA (3 new questions, sob16–sob18) =====
+  {
+    id: "sob16",
+    topic: "sobrevivencia",
+    question: "O extintor de incêndio classe A é identificado pela cor:",
+    options: [
+      "Vermelha — para líquidos inflamáveis",
+      "Amarela — para incêndios elétricos",
+      "Verde — para materiais sólidos combustíveis",
+      "Azul — para gases inflamáveis",
+      "Preta — para metais combustíveis"
+    ],
+    correctIndex: 2,
+    explanation: "O extintor classe A é identificado por triângulo verde e combate incêndios em materiais sólidos comuns (madeira, papel, tecido, borracha)."
+  },
+  {
+    id: "sob17",
+    topic: "sobrevivencia",
+    question: "Como se opera corretamente um extintor de espuma (AFFF)?",
+    options: [
+      "Apontar para o topo das chamas e pulverizar de cima para baixo",
+      "Virar o extintor com a tampa para baixo e dirigir o jato à base das chamas",
+      "Pulverizar em círculos ao redor do fogo",
+      "Abrir a válvula parcialmente para controlar o fluxo",
+      "Agitar vigorosamente antes de usar e direcionar para o centro do fogo"
+    ],
+    correctIndex: 1,
+    explanation: "O extintor de espuma química é ativado virando-o com a tampa para baixo; o jato deve ser dirigido à base das chamas para sufocar o fogo adequadamente."
+  },
+  {
+    id: "sob18",
+    topic: "sobrevivencia",
+    question: "Ao socorrer uma vítima de choque elétrico ainda em contato com a fonte de energia, deve-se primeiro:",
+    options: [
+      "Segurar a vítima pelos braços e puxar rapidamente",
+      "Jogar água sobre a vítima para interromper a corrente",
+      "Remover a vítima da fonte usando material não condutor (madeira seca, borracha, plástico)",
+      "Iniciar RCP imediatamente sem interromper o contato elétrico",
+      "Chamar socorro e aguardar sem tocar na vítima em qualquer situação"
+    ],
+    correctIndex: 2,
+    explanation: "Em choques elétricos, o socorrista nunca deve tocar a vítima diretamente enquanto ela estiver em contato com a corrente. Use material não condutor (madeira seca, borracha) para afastá-la da fonte."
   }
 ];

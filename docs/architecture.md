@@ -6,15 +6,16 @@
 motonauta/
 ├── index.html        # Single HTML file, all screens as divs
 ├── app.js            # App logic: router, modes, storage
-├── questions.js      # Question bank + topic constants
+├── questions.js      # Question bank (117 questions) + topic constants
 ├── style.css         # All styles, mobile-first
-├── sw.js             # Service worker (cache-first)
+├── sw.js             # Service worker (cache-first, motonauta-v4)
 ├── manifest.json     # PWA manifest
 ├── icons/
 │   ├── icon-192.png
 │   └── icon-512.png
 └── docs/
-    └── architecture.md
+    ├── architecture.md
+    └── pdf/          # Source images used to derive questions
 ```
 
 ## SPA Routing
@@ -27,6 +28,7 @@ Hash-based (`#home`, `#flashcards`, `#quiz`, `#exam`). Each screen is a `<div cl
 - Topic filter chips (shared state: `selectedTopic`)
 - Mode cards → navigate to mode
 - Progress stats from localStorage
+- `.app-header` shows total question count via `.q-count` span
 
 ### Flash Cards (`#flashcards`)
 - Builds a weighted deck from `questions.js`, filtered by topic
@@ -50,6 +52,30 @@ Hash-based (`#home`, `#flashcards`, `#quiz`, `#exam`). Each screen is a `<div cl
 - Auto-submit at timer zero or manual "Finalizar"
 - Results: score, pass/fail banner, topic breakdown, full review
 - Saves to `localStorage.examHistory`
+
+## Question Bank
+
+117 questions across 5 topics:
+
+| Topic key | Label | Count | ID range |
+|---|---|---|---|
+| `ripeam` | RIPEAM | 27 | rip01–rip27 |
+| `balizamento` | Balizamento | 20 | bal01–bal20 |
+| `primeiros_socorros` | Primeiros Socorros | 28 | ps01–ps28 |
+| `regulamentos` | Regulamentos | 24 | reg01–reg24 |
+| `sobrevivencia` | Sobrevivência | 18 | sob01–sob18 |
+
+Schema per question:
+```js
+{
+  id: "rip01",           // unique, prefix + sequential number
+  topic: "ripeam",       // one of 5 topic keys
+  question: "...",       // pt-BR
+  options: ["a","b","c","d","e"],  // exactly 5
+  correctIndex: 2,       // 0–4, varied positions in source
+  explanation: "..."     // pt-BR, 1–2 sentences
+}
+```
 
 ## Data Flow
 
@@ -102,3 +128,5 @@ Cache-first strategy. All app assets are pre-cached on install. Cache is version
 - Success: `#2e7d32`, Error: `#c62828`
 - Max-width container: 480px
 - All interactive elements: min 44px touch target
+- `.q-count`: 0.7rem, opacity 0.55 — discrete question count shown in all headers
+- `.screen-title`: flex column wrapper around `<h2>` + `.q-count` in mode screen headers
