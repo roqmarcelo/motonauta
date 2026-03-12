@@ -9,6 +9,9 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <title>Motonauta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,6 +23,7 @@
         <div class="logo">⚓</div>
         <h1>Motonauta</h1>
         <p class="subtitle">Estudo para habilitação de jet ski</p>
+        <span class="q-count"></span>
       </header>
 
       <div class="topic-chips" id="topic-chips">
@@ -73,7 +77,10 @@
     <div id="screen-flashcards" class="screen">
       <header class="screen-header">
         <button class="btn-back" id="fc-back">← Voltar</button>
-        <h2>Flash Cards</h2>
+        <div class="screen-title">
+          <h2>Flash Cards</h2>
+          <span class="q-count"></span>
+        </div>
         <span class="fc-counter" id="fc-counter">0/0</span>
       </header>
       <div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-progress-fill"></div></div>
@@ -114,7 +121,10 @@
       <div id="quiz-setup">
         <header class="screen-header">
           <button class="btn-back" id="quiz-back">← Voltar</button>
-          <h2>Quiz</h2>
+          <div class="screen-title">
+            <h2>Quiz</h2>
+            <span class="q-count"></span>
+          </div>
         </header>
         <div class="quiz-setup-body">
           <p>Selecione o tema e responda 10 questões com feedback imediato.</p>
@@ -133,7 +143,10 @@
       <div id="quiz-active" class="hidden">
         <header class="screen-header">
           <button class="btn-back" id="quiz-quit">← Sair</button>
-          <h2>Quiz</h2>
+          <div class="screen-title">
+            <h2>Quiz</h2>
+            <span class="q-count"></span>
+          </div>
           <span class="quiz-counter" id="quiz-counter">1/10</span>
         </header>
         <div class="quiz-body">
@@ -167,7 +180,10 @@
       <div id="exam-intro">
         <header class="screen-header">
           <button class="btn-back" id="exam-back">← Voltar</button>
-          <h2>Simulado</h2>
+          <div class="screen-title">
+            <h2>Simulado</h2>
+            <span class="q-count"></span>
+          </div>
         </header>
         <div class="exam-intro-body">
           <h3>Regras do Simulado</h3>

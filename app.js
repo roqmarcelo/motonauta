@@ -35,6 +35,11 @@ function handleRoute() {
 
 window.addEventListener('hashchange', handleRoute);
 
+// Populate question count on all headers
+document.querySelectorAll('.q-count').forEach(el => {
+  el.textContent = questions.length + ' questões';
+});
+
 // --- Utility ---
 function shuffle(arr) {
   const a = [...arr];
@@ -184,6 +189,11 @@ function renderFlashCard() {
   card.classList.remove('flipped');
   document.querySelector('.fc-actions').classList.add('fc-hidden');
   fcFlipped = false;
+
+  const inner = card.querySelector('.fc-inner');
+  inner.classList.remove('arriving');
+  void inner.offsetWidth;
+  inner.classList.add('arriving');
 }
 
 // Swipe gestures for flashcards
@@ -460,10 +470,11 @@ function updateTimerDisplay() {
   const h = Math.floor(examTimeLeft / 3600);
   const m = Math.floor((examTimeLeft % 3600) / 60);
   const s = examTimeLeft % 60;
-  document.getElementById('exam-timer').textContent =
-    `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   const timerEl = document.getElementById('exam-timer');
-  timerEl.classList.toggle('timer-warning', examTimeLeft <= 300);
+  timerEl.textContent = `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  timerEl.classList.remove('warn', 'critical');
+  if (examTimeLeft <= 120) timerEl.classList.add('critical');
+  else if (examTimeLeft <= 600) timerEl.classList.add('warn');
 }
 
 function renderExamQuestion() {
